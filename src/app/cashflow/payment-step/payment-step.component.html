@@ -1,0 +1,39 @@
+
+<div class="payment-order">
+  <button (click)="showPrev()" class="prev" [disabled]="!prevBtn">Show prev</button>
+  <ul class="payment-order__list">
+      <li class="payment-order__list--item" *ngFor="let payment of tempArr">
+
+       <!-- <span class="payment-order__list--item-status-success" *ngIf="isSuccess && isPending"> -->
+
+        <span class="payment-order__list--item-status-success">
+        <img src="{{successIconSrc}}" alt="icon" height="24" width="24">
+      </span>
+       <!-- <span  class="payment-order__list--item-status-pending" *ngIf="isPending && isSuccess">{{payment.id}}</span> -->
+       <span  class="payment-order__list--item-status-pending">{{payment.id}}</span>
+         <span class="payment-order__list--item-date"> {{payment.date}} </span>
+         <span class="payment-order__list--item-amount">
+           <span class="rupee-symbol">&#8377;</span>&nbsp;{{payment.amount}}</span>
+         <span class="payment-order__list--item-info"> {{payment.active}}</span>
+      </li>
+   </ul>
+   <!-- <span>{{closedStatus}}</span> -->
+   <button (click)="showNext()" class="next" [disabled]="!nextBtn"> show {{(nextDataLenght)}} more .. </button>
+
+</div>
+
+<div style="margin-top: 40px;">
+  <app-disclaimer></app-disclaimer>
+ </div>
+
+
+
+
+
+  <!-- <div class="container-1">
+    <button (click)="showPrev()" [disabled]="!prevBtn">Show prev</button>
+    <ul class="data-container">
+      <li *ngFor="let data of displayData" class="list-item">list {{ data }}</li>
+    </ul>
+    <button (click)="showNext()" [disabled]="!nextBtn"> Load next  </button>
+  </div> -->

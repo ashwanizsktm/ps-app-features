@@ -1,0 +1,24 @@
+.home {
+  position: relative;
+  width: 100vw;
+  overflow-x: hidden;
+  height: 93vh;
+  background-image: url(https://static.scientificamerican.com/sciam/cache/file/4E0744CD-793A-4EF8-B550B54F7F2C4406.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.body{
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000;
+  opacity: 0.8;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+}
