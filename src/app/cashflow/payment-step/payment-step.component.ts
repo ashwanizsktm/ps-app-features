@@ -48,22 +48,17 @@ export class PaymentStepComponent implements OnInit, AfterViewInit, OnChanges {
 
   ngOnInit() {
    this.setinititalCashflow();
+
+
    this.nextDataLenght =  this.nextData.length - 3;
-   console.log("next", this.nextDataLenght)
+
+
+   console.log(this.PaymentData);
+
+
   }
 
-  ngOnChanges() {
-    // this.nextDataLenght =  this.nextData.length - 3;
-    if(this.closedStatus == true) {
-      this.setCashflowStatus();
-      this.nextBtn = true;
-      this.prevBtn = true;
-    } else if(this.closedStatus == false){
-      this.setinititalCashflow();
-      this.nextBtn = true;
-      this.prevBtn = true;
-    }
-  }
+
   prevData:any[] = [];
   nextData:any[] = [];
   nextDataLenght!: any;
@@ -73,7 +68,8 @@ export class PaymentStepComponent implements OnInit, AfterViewInit, OnChanges {
     const now: Date = new Date();
     let closest: any = Infinity;
 
-    const allDataLenght = this.PaymentData.length;
+
+    // const allDataLenght = this.PaymentData.length;
     // console.log(allDataLenght)
 
     this.PaymentData.map((item, idx )=> {
@@ -89,29 +85,24 @@ export class PaymentStepComponent implements OnInit, AfterViewInit, OnChanges {
         this.tempArr = this.PaymentData.slice(n-2, n +3);
       }
 
-      if(date > now) {
-        this.nextData.push(item);
-        // console.log("prevdata", prev)
-        // console.log(item.lenght)
-         console.log(this.nextData.length)
 
-         this.isPending = true;
-        this.isSuccess = false;
 
-      }
 
-      if(date < now) {
-        this.prevData.push(item);
-        this.isPending = false;
-        this.isSuccess = true;
-      }
+      // if(date > now) {
+      //   this.PaymentData.forEach(item => {
+      //     item['iscompleted'] = false;
+      //   })
+      // }
+
+      // if(date < now) {
+      //   debugger;
+      //   this.PaymentData.forEach(item => {
+      //     item['iscompleted'] = true;
+      //   })
+      // }
     })
+    // console.log(this.PaymentData)
 
-
-    // debugger;
-
-
-    // console.log("prevData length", this.prevData.length)
   }
 
 
@@ -207,6 +198,19 @@ export class PaymentStepComponent implements OnInit, AfterViewInit, OnChanges {
       //   listItem.scrollBy(0, 200);
       // })
 
+  }
+
+
+  ngOnChanges() {
+    if(this.closedStatus == true) {
+      this.setCashflowStatus();
+      this.nextBtn = true;
+      this.prevBtn = true;
+    } else if(this.closedStatus == false){
+      this.setinititalCashflow();
+      this.nextBtn = true;
+      this.prevBtn = true;
+    }
   }
 }
 

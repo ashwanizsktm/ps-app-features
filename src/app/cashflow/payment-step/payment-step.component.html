@@ -6,11 +6,11 @@
 
        <!-- <span class="payment-order__list--item-status-success" *ngIf="isSuccess && isPending"> -->
 
-        <span class="payment-order__list--item-status-success">
+        <span class="payment-order__list--item-status-success" *ngIf="payment.isCompleted">
         <img src="{{successIconSrc}}" alt="icon" height="24" width="24">
       </span>
        <!-- <span  class="payment-order__list--item-status-pending" *ngIf="isPending && isSuccess">{{payment.id}}</span> -->
-       <span  class="payment-order__list--item-status-pending">{{payment.id}}</span>
+       <span  class="payment-order__list--item-status-pending" *ngIf="!payment.isCompleted">{{payment.id}}</span>
          <span class="payment-order__list--item-date"> {{payment.date}} </span>
          <span class="payment-order__list--item-amount">
            <span class="rupee-symbol">&#8377;</span>&nbsp;{{payment.amount}}</span>
