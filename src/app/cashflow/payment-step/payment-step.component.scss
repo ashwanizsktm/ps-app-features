@@ -3,19 +3,19 @@
     height: 400px;
 
     &__list {
-      height: 275px;
+      height: 287px;
       // border-top: 1px solid #000;
       // border-bottom: 1px solid #000;
       overflow-y: auto;
       list-style: none;
-      padding   : 0;
+      padding   : 5px;
       margin    : 10px 0;
 
       &--item {
         font-size      : 15px;
         font-weight    : #929292;
         font-weight    : 500;
-        line-height    : 1.5;
+        // line-height    : 1.5;
         display        : flex;
         justify-content: space-between;
         align-items    : center;

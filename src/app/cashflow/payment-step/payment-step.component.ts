@@ -24,8 +24,6 @@ export class PaymentStepComponent implements OnInit, AfterViewInit, OnChanges {
   successIconSrc =
     'https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-512.png';
 
-   data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-  displayData!: any[];
   prevBtn: boolean = true;
   nextBtn = true;
   prevInitialIdx!: number;
@@ -35,29 +33,16 @@ export class PaymentStepComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() PaymentData!: any[];
   @Input() closedStatus!: boolean;
-  displayCashflow: any[] = [];
+
   tempArr:any[] = [];
   datesEle!: Element[];
 
-  isSuccess!: boolean;
-  isPending!: boolean;
-  previousListItems!: NodeListOf<Element>;
-  nextListItems!: NodeListOf<Element>;
-  nextCashflowLeft!: number;
   constructor() {}
 
   ngOnInit() {
    this.setinititalCashflow();
-
-
-   this.nextDataLenght =  this.nextData.length - 3;
-
-
-   console.log(this.PaymentData);
-
-
+   this.cashflowStatus();
   }
-
 
   prevData:any[] = [];
   nextData:any[] = [];
@@ -67,16 +52,10 @@ export class PaymentStepComponent implements OnInit, AfterViewInit, OnChanges {
   setinititalCashflow() {
     const now: Date = new Date();
     let closest: any = Infinity;
-
-
-    // const allDataLenght = this.PaymentData.length;
-    // console.log(allDataLenght)
-
     this.PaymentData.map((item, idx )=> {
       const date: Date = new Date(item.date);
       if (date >= now && (date < new Date(closest) || date < closest)) {
         closest = item.date;
-        // console.log(idx)
         let n = idx;
         this.prevInitialIdx = n - 2;
         this.prevlastIdx = n;
@@ -84,27 +63,16 @@ export class PaymentStepComponent implements OnInit, AfterViewInit, OnChanges {
         this.nextLastIdx = n + 2;
         this.tempArr = this.PaymentData.slice(n-2, n +3);
       }
-
-
-
-
-      // if(date > now) {
-      //   this.PaymentData.forEach(item => {
-      //     item['iscompleted'] = false;
-      //   })
-      // }
-
-      // if(date < now) {
-      //   debugger;
-      //   this.PaymentData.forEach(item => {
-      //     item['iscompleted'] = true;
-      //   })
-      // }
     })
-    // console.log(this.PaymentData)
-
   }
 
+  cashflowStatus(){
+    const now:Date = new Date()
+    this.PaymentData.map((list) => {
+      if (new Date(list.date) < now) list['isPaymentDone'] = true;
+       else list['isPaymentDone'] = false;
+      });
+  }
 
   showPrev() {
     this.nextBtn = true;
@@ -114,12 +82,11 @@ export class PaymentStepComponent implements OnInit, AfterViewInit, OnChanges {
       first = 0;
       this.prevBtn = false;
     }
-    this.tempArr = this.PaymentData.slice(first,last)
+    this.tempArr = this.PaymentData.slice(first, last)
     this.prevInitialIdx = first;
   }
 
   showNext() {
-    // debugger;
     this.nextDataLenght = this.nextDataLenght - 3;
     console.log("on showmore,", this.nextDataLenght);
     this.prevBtn = true;
@@ -145,65 +112,14 @@ export class PaymentStepComponent implements OnInit, AfterViewInit, OnChanges {
         closest = el.textContent;
         el.parentElement.classList.add('active-item');
       }
-
-      if(el.parentElement.classList.contains('active-item')){
-        el.previousElementSibling.previousElementSibling.style = 'display:none';
-      }
-
-      // if (date > now) {
-      //   el.parentElement.className+= " future-cashflow"
-      //   el.previousElementSibling.previousElementSibling.style ='display:none';
-      // }
-      // if (date < now) {
-      //   el.parentElement.className+= " previous-cashflow"
-      //   el.previousElementSibling.style = 'display:none';
-      // }
     });
   }
 
-  previousLstHeight!: number;
-  nextListHeight!:number;
-
   ngAfterViewInit() {
     this.setCashflowStatus();
-
-    const listItem = document.querySelector('.payment-order__list')! as HTMLElement;
-    this.previousListItems = document.querySelectorAll('.previous-cashflow');
-    this.nextListItems = document.querySelectorAll('.future-cashflow');
-
-    //  this.previousListItems.forEach(item => {
-    //    this.previousLstHeight =  item.clientHeight*this.previousListItems.length;
-    //  })
-
-    //  this.nextListItems.forEach(item => {
-    //    this.nextListHeight = item.clientHeight*this.nextListItems.length
-    //  })
-
-    // console.log("prevlistItemsHeight",this.previousLstHeight);
-    // console.log("nexlistItesHeight",this.nextListHeight);
-    // console.log("clientHeight", listItem.clientHeight);
-    // console.log("offsetHeight", listItem.offsetHeight);
-    // console.log("scrollHeight", listItem.scrollHeight);
-    // console.log("scroll to", listItem.scrollHeight);
-    // console.log("clientHeight", listItem.clientHeight);
-    // listItem.scrollTop(200)
-    // listItem.scrollTop =  listItem.scrollHeight - listItem.offsetHeight;
-
-    // listItem.scrollTop = 715;
-
-    // listItem.scrollTop =
-
-    // console.log("calculation",listItem.scrollHeight - this.previousLstHeight);
-      // listItem.addEventListener('scroll', (e) => {
-      //   listItem.scrollBy(0, 200);
-      // })
-
   }
-
-
   ngOnChanges() {
     if(this.closedStatus == true) {
-      this.setCashflowStatus();
       this.nextBtn = true;
       this.prevBtn = true;
     } else if(this.closedStatus == false){
@@ -213,5 +129,3 @@ export class PaymentStepComponent implements OnInit, AfterViewInit, OnChanges {
     }
   }
 }
-
-
