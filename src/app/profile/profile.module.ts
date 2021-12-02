@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { CashflowRoutingModule } from './cashflow-routing.module';
-import { CashflowComponent } from './cashflow.component';
+import { CashflowRoutingModule } from './profile-routing.module';
+import { ProfileComponent } from './profile.component';
 import { PaymentStepComponent } from './payment-step/payment-step.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
+import { SharedModule } from '../shared/shared.module';
+
 
 
 @NgModule({
   declarations: [
-    CashflowComponent,
+    ProfileComponent,
     PaymentStepComponent,
-    DisclaimerComponent
+    DisclaimerComponent,
   ],
   imports: [
     CommonModule,
+    SharedModule,
     CashflowRoutingModule
   ]
 })

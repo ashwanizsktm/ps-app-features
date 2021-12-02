@@ -1,0 +1,30 @@
+  <button routerLink="/home" class="back-btn">Back</button> <br> <br>
+
+  <section class="container">
+  	<div style="width: 375px; height: 159px; padding: 10px; border: 1px solid #000;
+    margin-top: 20px; padding-top: 20px;">
+  		<h2>bond portfolio heading</h2>
+  		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nemo quos ea.</p>
+  		<button class="open-btn" (click)="openCashFlow()">cashflow</button>
+  	</div>
+  	<div style="width: 375px; height: 159px; padding: 10px; border: 1px solid #000; margin: 30px 0;">
+  		<h2>bond portfolio heading</h2>
+  		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nemo quos ea.</p>
+  		<button class="open-btn" (click)="openCashFlow()">cashflow</button>
+  	</div>
+  	<div style="width: 375px; height: 159px; padding: 10px; border: 1px solid #000;">
+  		<h2>bond portfolio heading</h2>
+  		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nemo quos ea.</p>
+  		<button class="open-btn" (click)="openCashFlow()">cashflow</button>
+  	</div>
+
+  	<app-slider [sliderStatus]="SliderStatusInfo">
+  		<app-payment-step [PaymentData]="theData" [closedStatus]="!SliderStatusInfo.isSlideOut"></app-payment-step>
+      <div style="margin-top: 40px;">
+        <app-disclaimer></app-disclaimer>
+       </div>
+  	</app-slider>
+
+
+
+  </section>

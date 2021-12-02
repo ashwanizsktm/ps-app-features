@@ -1,16 +1,13 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-cashflow',
-  templateUrl: './cashflow.component.html',
-  styleUrls: ['./cashflow.component.scss'],
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss'],
 })
-export class CashflowComponent implements OnInit, AfterViewInit {
-  open_btn!: HTMLElement;
-  close_btn!: HTMLButtonElement;
-  popup!: HTMLElement;
-  main_popup!: HTMLElement;
-  closeStatus!: boolean;
+export class ProfileComponent {
+
+
   constructor() {}
   // start of dummy data
   theData = [
@@ -41,38 +38,13 @@ export class CashflowComponent implements OnInit, AfterViewInit {
   ];
   // End of dummy data
 
-  ngOnInit(): void {
-    this.slideinandOutChasflow();
-  }
 
-  ngAfterViewInit() {
-  }
 
-  slideinandOutChasflow() {
-    this.popup = document.querySelector('.popup')!;
-    this.main_popup = document.querySelector('.main-popup')!;
-    window.addEventListener('click', (e) => {
-      this.closeStatus = false;
-      if (e.target == document.querySelector('.popup-overlay')) {
-        this.main_popup.style.cssText ='animation:slide-out .5s ease; animation-fill-mode: forwards;';
-        setTimeout(() => {
-          this.popup.style.display = 'none';
-        }, 500);
-      }
-    });
-  }
-
+  SliderStatusInfo!:{isShow:string, isSlideOut: boolean }
   openCashFlow() {
-    this.closeStatus = true;
-    this.popup.style.display = 'flex';
-      this.main_popup.style.cssText ='animation:slide-in .5s ease; animation-fill-mode: forwards;';
+      this.SliderStatusInfo = {
+        isShow: 'flex',
+        isSlideOut: false
+      }
+    }
   }
-
-  closeCashflow() {
-    this.closeStatus = false;
-    this.main_popup.style.cssText ='animation:slide-out .5s ease; animation-fill-mode: forwards;';
-   setTimeout(() => {
-    this.popup.style.display = 'none';
-  }, 500);
-  }
-}

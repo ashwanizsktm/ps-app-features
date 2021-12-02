@@ -9,7 +9,7 @@ const routes: Routes = [
 
   {
     path: 'cashflow',
-   loadChildren: () => import('./cashflow/cashflow.module').then(m => m.CashflowModule)
+   loadChildren: () => import('./profile/profile.module').then(m => m.CashflowModule)
    }
 ];
 

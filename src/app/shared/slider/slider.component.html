@@ -1,0 +1,25 @@
+<!-- <section class="slider">
+  <div class="popup" [ngStyle]="{'display':isShow}">
+      <div class="popup-overlay" #popupOverlay></div>
+      <div class="main-popup" [ngClass]="isSlideOut ? 'slide-out-animate' : 'slide-in-animate'">
+          <span class="close-btn" (click)="close()"> &times;</span>
+          <div class="content" style="padding-top: 50px;">
+              <ng-content></ng-content>
+          </div>
+      </div>
+  </div>
+</section> -->
+
+<section class="slider">
+  <div class="popup" [ngStyle]="{'display':sliderStatus?.isShow}">
+      <div class="popup-overlay" #popupOverlay></div>
+      <div class="main-popup" [ngClass]="sliderStatus?.isSlideOut ? 'slide-out-animate' : 'slide-in-animate'">
+          <span class="close-btn" (click)="close()"> &times;</span>
+          <div class="content" style="padding-top: 50px;">
+              <ng-content></ng-content>
+          </div>
+      </div>
+  </div>
+</section>
+
+
