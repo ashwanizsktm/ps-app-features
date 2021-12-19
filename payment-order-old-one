@@ -1,0 +1,34 @@
+
+                      // case 5:
+                      //     if (this.paymentData.length === 6) {
+                      //         this.initialCashflow = this.paymentData.slice(nextPayDateId - 4, nextPayDateId + 2);
+                      //         this.nextBtnIndex = nextPayDateId - 4;
+                      //         console.log("next pay id is 5 and length is 6", nextPayDateId, this.initialCashflow);
+                      //     } else {
+                      //         this.initialCashflow = this.paymentData.slice(nextPayDateId - 3, nextPayDateId + 2);
+                      //         this.nextBtnIndex = nextPayDateId - 3;
+                      //         console.log("next pay id is 5 and length is not 6", nextPayDateId, this.initialCashflow);
+                      //     }
+                      //     break;
+                      // case (nextPayDateId):
+                          // if (nextPayDateId > 2 && nextPayDateId < 6) {
+                          //     this.initialCashflow = this.paymentData.slice(nextPayDateId - 2, nextPayDateId + 3);
+                          //     this.nextBtnIndex = nextPayDateId - 3;
+                          //     console.log("nextPayDateId > 2 && nextPayDateId < 6", nextPayDateId, this.initialCashflow);
+                          // }
+                          // if (nextPayDateId >= 6) {
+                          //     let secondLastIndex = this.paymentData.length - 2;
+                          //     if (nextPayDateId >= secondLastIndex) {
+                          //         this.initialCashflow = this.paymentData.slice(secondLastIndex - 3, secondLastIndex + 3);
+                          //         this.nextBtnIndex = secondLastIndex - 3;
+                          //         console.log("nextPayid >=6 ", nextPayDateId, this.initialCashflow);
+                          //     }
+                          //     if (nextPayDateId >= 6 && nextPayDateId < secondLastIndex) {
+                          //       console.log("all payment data", this.paymentData);
+
+                          //         this.initialCashflow = this.paymentData.slice(nextPayDateId - 2, nextPayDateId + 3);
+                          //         this.nextBtnIndex = nextPayDateId - 3;
+                          //         console.log('nextPayDateId >= 6 && nextPayDateId < secondLastIndex', this.initialCashflow);
+                          //     }
+                          // }
+                          // break;

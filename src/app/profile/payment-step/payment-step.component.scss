@@ -37,8 +37,6 @@
           margin-bottom: 0;
         }
 
-        &-status-success {}
-
         &-status-pending {
           border       : 1px solid #222222;
           height       : 20px;
@@ -71,7 +69,7 @@
     }
   }
 
-  .active-item {
+  .active {
     border     : 1.20302px solid #FFB74D !important;
     color      : #222222 !important;
     font-weight: 600 !important;
@@ -136,8 +134,8 @@
 //   padding: 4px 15px 4px 20px;
 // }
 
-.prev, .next{
-  margin-left: 30%;
+.prev-btn, .next-btn{
+  margin-left: 15%;
   border: none;
   font-size: 16px;
   font-weight: 500;
@@ -155,4 +153,8 @@
 .next:disabled{
   cursor: no-drop;
   opacity: 0.4;
+}
+
+.hide-btn{
+  display: none;
 }

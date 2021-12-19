@@ -1,17 +1,22 @@
 <div class="payment-order">
-  <button (click)="showPrev()" class="prev" [disabled]="!prevBtn">Show prev</button>
+  <!-- <button (click)="showPrev()" class="prev" [disabled]="!prevBtn">Show prev</button> -->
+
+  <button (click)="showPrev()" [ngClass]="{'hide-btn': hidePrevBtn}" class="prev-btn text-center d-block">View all
+    previous payments</button>
+
   <ul class="payment-order__list">
-      <li class="payment-order__list--item" *ngFor="let payment of tempArr">
+      <li class="payment-order__list--item" [ngClass]="{'active': payment?.active}" *ngFor="let payment of initialCashflow">
         <span class="payment-order__list--item-status-success" *ngIf="payment.isPaymentDone">
         <img src="{{successIconSrc}}" alt="icon" height="24" width="24">
       </span>
-       <span  class="payment-order__list--item-status-pending"*ngIf="!payment.isPaymentDone">{{payment.id}}</span>
+       <span  class="payment-order__list--item-status-pending"*ngIf="!payment.isPaymentDone">{{payment.serialNo}}</span>
          <span class="payment-order__list--item-date"> {{payment.date}} </span>
          <span class="payment-order__list--item-amount">
            <span class="rupee-symbol">&#8377;</span>&nbsp;{{payment.amount}}</span>
-         <span class="payment-order__list--item-info"> {{payment.active}}</span>
+         <!-- <span class="payment-order__list--item-info"> {{payment.active}}</span> -->
       </li>
    </ul>
-   <button (click)="showNext()" class="next" [disabled]="!nextBtn"> show more .. </button>
+   <button (click)="showNext()" [ngClass]="{'hide-btn': hideNextBtn}" class="next-btn text-center"> View all next
+    payments</button>
 </div>
 

@@ -18,12 +18,15 @@
   		<button class="open-btn" (click)="openCashFlow()">cashflow</button>
   	</div>
 
-  	<app-slider [sliderStatus]="SliderStatusInfo">
-  		<app-payment-step [PaymentData]="theData" [closedStatus]="!SliderStatusInfo.isSlideOut"></app-payment-step>
-      <div style="margin-top: 40px;">
-        <app-disclaimer></app-disclaimer>
-       </div>
-  	</app-slider>
+    <div *ngIf="theFlag">
+      <app-slider [sliderStatus]="SliderStatusInfo">
+        <app-payment-step [paymentData]="ipSchedule" [closedStatus]="!SliderStatusInfo.isSlideOut"></app-payment-step>
+        <div style="margin-top: 40px;">
+          <app-disclaimer></app-disclaimer>
+         </div>
+      </app-slider>
+    </div>
+
 
 
 
